@@ -48,7 +48,7 @@ namespace :nginx do
   task :local do
    run_locally do
      stringio = template('nginx_conf.erb')
-     File.open('.tmp/nginx/nginx_conf', 'w') do |f|
+     File.open('./tmp/nginx/nginx_conf', 'w') do |f|
        f.puts stringio.read
      end
    end

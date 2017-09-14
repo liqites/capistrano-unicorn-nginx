@@ -45,6 +45,15 @@ namespace :nginx do
     end
   end
 
+  task :local do
+   run_locally do
+     stringio = template('nginx_conf.erb')
+     File.open('.tmp/nginx/nginx_conf', 'w') do |f|
+       f.puts stringio.read
+     end
+   end
+ end
+
   desc 'Setup nginx ssl certs'
   task :setup_ssl do
     next unless fetch(:nginx_use_ssl)
